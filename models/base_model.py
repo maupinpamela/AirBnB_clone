@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 """
 This module contains the class BaseModel which defines all
 common attributes/methods for other classes.
