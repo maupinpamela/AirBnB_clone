@@ -20,7 +20,6 @@ class HBNBCommand(cmd.Cmd):
         """Quit command to exit the program"""
         raise SystemExit
 
-
     def do_create(self, args):
         """Creates a new instance of BaseModel, saves and prints id"""
         if len(args) == 0:
@@ -28,7 +27,7 @@ class HBNBCommand(cmd.Cmd):
         elif args != "BaseModel":
             print("** class doesn't exist **")
         else:
-            newinstance =  BaseModel()
+            newinstance = BaseModel()
             newinstance.save()
             print(newinstance.id)
 
@@ -51,7 +50,7 @@ class HBNBCommand(cmd.Cmd):
                 print("** no instance found **")
 
     def do_destroy(self, args):
-
+        """Deletes an instance based on the class name and id"""
 
         args = shlex.split(args)
         if len(args) == 0:
@@ -67,6 +66,7 @@ class HBNBCommand(cmd.Cmd):
                 del new_dict[key]
             else:
                 print("** no instance found **")
+
 
 if __name__ == '__main__':
     prompt = HBNBCommand()
