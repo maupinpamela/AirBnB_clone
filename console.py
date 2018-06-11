@@ -19,8 +19,8 @@ from models.review import Review
 class HBNBCommand(cmd.Cmd):
     """Class for the command prompt"""
 
-    class_names = {"BaseModel", "State", "City",
-                   "Review", "Amenity", "Place", "User"}
+    class_names = ["BaseModel", "State", "City",
+                   "Review", "Amenity", "Place", "User"]
 
     def emptyline(self):
         pass
@@ -40,14 +40,11 @@ class HBNBCommand(cmd.Cmd):
         elif args != "BaseModel" and args != "User":
             print("** class doesn't exist **")
         else:
-            if args == "BaseModel":
-                newinstance = BaseModel()
-                newinstance.save()
-                print(newinstance.id)
-            else:
-                newinstance = User()
-                newinstance.save()
-                print(newinstance.id)
+            for i in range(len(HBNBCommand.class_names)):
+                if args == HBNBCommand.class_names[i]:
+                    new_instance = eval(HBNBCommand.class_names[i] + "(" + ")")
+                    new_instance.save()
+                    print(new_instance.id)
 
     def do_show(self, args):
         """ Prints the string of an instance based on class name and id"""
