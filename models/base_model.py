@@ -64,3 +64,7 @@ class BaseModel():
     def __str__(self):
         """String magic method"""
         return '[{}] ({}) {}'.format(type(self).__name__, self.id, self.__dict__)
+
+    def __repr__(self):
+        """repr magic method"""
+        return self.__str__()

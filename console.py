@@ -2,13 +2,26 @@
 import cmd
 import sys
 import models
+from models import storage
 import shlex
 from models.base_model import BaseModel
+from models.user import User
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.place import Place
+from models.review import Review
+
+
 """Command Prompt"""
 
 
 class HBNBCommand(cmd.Cmd):
     """Class for the command prompt"""
+
+    class_names = {"BaseModel", "State", "City",
+                   "Review", "Amenity", "Place", "User"}
+
     def emptyline(self):
         pass
 
@@ -23,13 +36,18 @@ class HBNBCommand(cmd.Cmd):
     def do_create(self, args):
         """Creates a new instance of BaseModel, saves and prints id"""
         if len(args) == 0:
-            print("** class name missing ** ")
-        elif args != "BaseModel":
+            print("** class name missing **")
+        elif args != "BaseModel" and args != "User":
             print("** class doesn't exist **")
         else:
-            newinstance = BaseModel()
-            newinstance.save()
-            print(newinstance.id)
+            if args == "BaseModel":
+                newinstance = BaseModel()
+                newinstance.save()
+                print(newinstance.id)
+            else:
+                newinstance = User()
+                newinstance.save()
+                print(newinstance.id)
 
     def do_show(self, args):
         """ Prints the string of an instance based on class name and id"""
@@ -67,6 +85,41 @@ class HBNBCommand(cmd.Cmd):
             else:
                 print("** no instance found **")
 
+    def do_update(self, args):
+        """
+        Updates an instance based on exact class name and id
+        """
+        args = shlex.split(args)
+        if len(args) == 4:
+            class_id = "{}.{}".format(args[0], args[1])
+            setattr(storage.all()[class_id], args[2], args[3])
+            storage.all()[class_id].save()
+        elif len(args) == 0:
+            print("** class name missing **")
+        elif args[0] not in HBNBCommand.class_names:
+            print("** class doesn't exist **")
+        elif len(args) == 1:
+            print("** instance id missing **")
+        elif ("{}.{}".format(args[0], args[1])) not in storage.all().keys():
+            print("** no instance found **")
+        elif len(args) == 2:
+            print("** attribute name missing **")
+        else:
+            print("** value missing **")
+
+    def do_all(self, args):
+        """
+        do_all - prints string representation of all instances
+        """
+        temp_dict = models.storage.all()
+        if args != "BaseModel":
+            print("** class doesn't exist **")
+        if args == "all":
+            for obj in temp_dict:
+                print([temp_dict[obj]])
+        else:
+            for obj in temp_dict:
+                print([temp_dict[obj]])
 
 if __name__ == '__main__':
     prompt = HBNBCommand()
