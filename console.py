@@ -14,7 +14,6 @@ from models.place import Place
 from models.review import Review
 
 
-
 class HBNBCommand(cmd.Cmd):
     """Class for the command prompt"""
 
@@ -125,6 +124,7 @@ class HBNBCommand(cmd.Cmd):
         else:
             for obj in temp_dict:
                 print([temp_dict[obj]])
+
 
 if __name__ == '__main__':
     prompt = HBNBCommand()
