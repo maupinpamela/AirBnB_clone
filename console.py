@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""Command Prompt"""
 import cmd
 import sys
 import models
@@ -12,8 +13,6 @@ from models.amenity import Amenity
 from models.place import Place
 from models.review import Review
 
-
-"""Command Prompt"""
 
 
 class HBNBCommand(cmd.Cmd):
@@ -57,7 +56,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
         check = 0
         for i in range(len(HBNBCommand.class_names)):
-            if args[0] != HBNBCommand.class_names[i]:
+            if args[0] == HBNBCommand.class_names[i]:
                 check = 1
         if check == 0:
             print("** class doesn't exist **")
@@ -77,7 +76,7 @@ class HBNBCommand(cmd.Cmd):
         args = shlex.split(args)
         check = 0
         for i in range(len(HBNBCommand.class_names)):
-            if args[0] != HBNBCommand.class_names[i]:
+            if args[0] == HBNBCommand.class_names[i]:
                 check = 1
         if check == 0:
             print("** class doesn't exist **")
@@ -118,7 +117,7 @@ class HBNBCommand(cmd.Cmd):
         do_all - prints string representation of all instances
         """
         temp_dict = models.storage.all()
-        if args[0] not in HBNBCommand.class_names:
+        if args not in HBNBCommand.class_names:
             print("** class doesn't exist **")
         if args == "all":
             for obj in temp_dict:
