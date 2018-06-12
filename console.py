@@ -35,16 +35,19 @@ class HBNBCommand(cmd.Cmd):
 
     def do_create(self, args):
         """Creates a new instance of BaseModel, saves and prints id"""
+        args = shlex.split(args)
         if len(args) == 0:
             print("** class name missing **")
-        elif args != "BaseModel" and args != "User":
-            print("** class doesn't exist **")
         else:
+            check = 0
             for i in range(len(HBNBCommand.class_names)):
-                if args == HBNBCommand.class_names[i]:
+                if args[0] == HBNBCommand.class_names[i]:
                     new_instance = eval(HBNBCommand.class_names[i] + "(" + ")")
                     new_instance.save()
                     print(new_instance.id)
+                    check = 1
+            if check == 0:
+                print("** class doesn't exist **")
 
     def do_show(self, args):
         """ Prints the string of an instance based on class name and id"""
@@ -52,7 +55,11 @@ class HBNBCommand(cmd.Cmd):
         args = shlex.split(args)
         if len(args) == 0:
             print("** class name missing **")
-        elif args[0] != "BaseModel":
+        check = 0
+        for i in range(len(HBNBCommand.class_names)):
+            if args[0] != HBNBCommand.class_names[i]:
+                check = 1
+        if check == 0:
             print("** class doesn't exist **")
         elif len(args) == 1:
             print("** instance id missing **")
@@ -68,10 +75,12 @@ class HBNBCommand(cmd.Cmd):
         """Deletes an instance based on the class name and id"""
 
         args = shlex.split(args)
-        if len(args) == 0:
-            print("** class missing name **")
-        elif args[0] != "BaseModel":
-            print("**class doesn't exist **")
+        check = 0
+        for i in range(len(HBNBCommand.class_names)):
+            if args[0] != HBNBCommand.class_names[i]:
+                check = 1
+        if check == 0:
+            print("** class doesn't exist **")
         elif len(args) == 1:
             print("** instance id missing **")
         else:
@@ -109,7 +118,7 @@ class HBNBCommand(cmd.Cmd):
         do_all - prints string representation of all instances
         """
         temp_dict = models.storage.all()
-        if args != "BaseModel":
+        if args[0] not in HBNBCommand.class_names:
             print("** class doesn't exist **")
         if args == "all":
             for obj in temp_dict:
