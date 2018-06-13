@@ -17,7 +17,7 @@ class Test_Amenity(unittest.TestCase):
 
     @classmethod
     def tearDown(self):
-        """This will tear down when the test is over"""
+        """This test will tear down when the test is over"""
         del self.amenity
 
     def test_docstring_Amenity(self):
