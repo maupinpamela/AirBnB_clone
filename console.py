@@ -29,7 +29,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_quit(self, args):
         """Quit command to exit the program"""
-        raise SystemExit
+        return True
 
     def do_create(self, args):
         """Creates a new instance of BaseModel, saves and prints id"""
