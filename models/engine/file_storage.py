@@ -34,16 +34,16 @@ class FileStorage():
             obj: object to be set
         """
         if obj:
-            obj_id = "{}.{}".format(type(obj).__name__, obj.id)
+            obj_id = "{}.{}".format(str(type(obj).__name__), str(obj.id))
             self.__objects[obj_id] = obj
 
     def save(self):
         """
         serializes __objects to the JSON file (path: __file_path)
         """
-        file_name = FileStorage.__file_path
+        file_name = self.__file_path
         dict_storage = {}
-        for obj_id, obj in FileStorage.__objects.items():
+        for obj_id, obj in self.__objects.items():
             dict_storage[obj_id] = obj.to_dict()
         with open(file_name, mode='w', encoding='utf-8') as f:
             json.dump(dict_storage, f)
@@ -52,7 +52,7 @@ class FileStorage():
         """
         deserializes JSON file to __objects if it exists
         """
-        file_name = FileStorage.__file_path
+        file_name = self.__file_path
         try:
             with open(file_name, mode='r', encoding='utf-8') as f:
                 loaded_objs = json.load(f)
