@@ -20,7 +20,7 @@ class FileStorage():
     """
     __file_path = 'file.json'
     __objects = {}
-    class_names = {"BaseModel": BaseModel,
+    __class_names = {"BaseModel": BaseModel,
                    "User": User,
                    "State": State,
                    "City": City,
@@ -32,7 +32,7 @@ class FileStorage():
         """
         returns a dictionary of __objects
         """
-        return self.__objects
+        return (self.__objects)
 
     def new(self, obj):
         """
@@ -41,7 +41,7 @@ class FileStorage():
             obj: object to be set
         """
         if obj:
-            obj_id = "{}.{}".format(str(type(obj).__name__), str(obj.id))
+            obj_id = "{}.{}".format(str(type(obj).__name__), obj.id)
             self.__objects[obj_id] = obj
 
     def save(self):
@@ -59,10 +59,10 @@ class FileStorage():
         deserializes JSON file to __objects if it exists
         """
         try:
-            with open(self.__file_path, mode='r', encoding='utf-8') as f:
+            with open(self.__file_path, encoding='utf-8') as f:
                 loaded_objs = json.load(f)
             for k, v in loaded_objs.items():
-                obj = self.class_names[v["__class__"]](**v)
+                obj = self.__class_names[v["__class__"]](**v)
                 self.__objects[k] = obj
         except FileNotFoundError:
             pass
