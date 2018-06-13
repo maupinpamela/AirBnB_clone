@@ -20,6 +20,7 @@ class HBNBCommand(cmd.Cmd):
     class_names = ["BaseModel", "State", "City",
                    "Review", "Amenity", "Place", "User"]
 
+    prompt = '(hbnb) '
     def emptyline(self):
         pass
 
@@ -147,6 +148,4 @@ class HBNBCommand(cmd.Cmd):
 
 
 if __name__ == '__main__':
-    prompt = HBNBCommand()
-    prompt.prompt = '(hbnb) '
-    prompt.cmdloop()
+    HBNBCommand().cmdloop()
