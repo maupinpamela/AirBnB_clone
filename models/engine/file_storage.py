@@ -24,7 +24,7 @@ class FileStorage():
         """
         returns a dictionary of __objects
         """
-        return FileStorage.__objects
+        return self.__objects
 
     def new(self, obj):
         """
@@ -32,8 +32,9 @@ class FileStorage():
         Args:
             obj: object to be set
         """
-        obj_id = "{}.{}".format(type(obj).__name__, obj.id)
-        FileStorage.__objects[obj_id] = obj
+        if obj:
+            obj_id = "{}.{}".format(type(obj).__name__, obj.id)
+            self.__objects[obj_id] = obj
 
     def save(self):
         """
@@ -54,7 +55,7 @@ class FileStorage():
         try:
             with open(file_name, mode='r', encoding='utf-8') as f:
                 loaded_objs = json.load(f)
-                for k, v in loaded_objs.items():
-                    self.new(eval(v["__class__"])(**v))
-        except:
+            for k, v in loaded_objs.items():
+                self.new(eval(v["__class__"])(**v))
+        except FileNotFoundError:
             pass
