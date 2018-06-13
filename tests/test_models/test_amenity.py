@@ -94,5 +94,6 @@ class Test_Amenity(unittest.TestCase):
         self.assertTrue(hasattr(i, "updated_at"))
         self.assertTrue(hasattr(i, "id"))
 
+
 if __name__ == "__main__":
     unittest.main()
