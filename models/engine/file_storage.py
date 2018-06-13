@@ -4,6 +4,7 @@ This module contains the class FileStorage that serializes instances
 to a JSON file and deserializes JSON files to instances
 """
 import json
+import models
 from models.base_model import BaseModel
 from models.user import User
 from models.state import State
