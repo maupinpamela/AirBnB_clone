@@ -89,6 +89,53 @@ class TestPlace(unittest.TestCase):
     def test_to_dict(self):
         self.assertEqual('to_dict' in dir(self.place_a), True)
 
+    def test_init_arg(self):
+        """pass in arg to new instance"""
+        i = Place(23)
+        self.assertEqual(type(i).__name__, "Place")
+        self.assertFalse(hasattr(i, "23"))
+
+    def test_str_method(self):
+        """Tests to see if each method is printing accurately"""
+        i = Place()
+        printed = i.__str__()
+        self.assertEqual(printed,
+                         "[Place] ({}) {}".format(i.id, i.__dict__))
+
+    def test_before_todict(self):
+        """Tests instances before using to_dict conversion"""
+        i = Place()
+        new_dict = i.__dict__
+        self.assertEqual(type(i).__name__, "Place")
+        self.assertTrue(hasattr(i, '__class__'))
+        self.assertEqual(str(i.__class__),
+                         "<class 'models.place.Place'>")
+        self.assertTrue(type(new_dict['created_at']), 'datetime.datetime')
+        self.assertTrue(type(new_dict['updated_at']), 'datetime.datetime')
+        self.assertTrue(type(new_dict['id']), 'str')
+
+    def test_after_todict(self):
+        """Test instances after using to_dict"""
+        my_model = Place()
+        new_model = Place()
+        test_dict = my_model.to_dict()
+        self.assertIsInstance(my_model, Place)
+        self.assertEqual(type(my_model).__name__, "Place")
+        self.assertEqual(test_dict['__class__'], "Place")
+        self.assertTrue(type(test_dict['__class__']), 'str')
+        self.assertTrue(type(test_dict['created_at']), 'str')
+        self.assertTrue(type(test_dict['updated_at']), 'str')
+        self.assertTrue(type(test_dict['id']), 'str')
+        self.assertNotEqual(my_model.id, new_model.id)
+
+    def test_hasattribute(self):
+        """checks to see if instances in Basemodel are made correctly"""
+        i = Place()
+        self.assertTrue(hasattr(i, "__init__"))
+        self.assertTrue(hasattr(i, "created_at"))
+        self.assertTrue(hasattr(i, "updated_at"))
+        self.assertTrue(hasattr(i, "id"))
+
 
 if __name__ == "__main__":
     unittest.main()
