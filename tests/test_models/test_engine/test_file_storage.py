@@ -92,3 +92,11 @@ class TestFileStorage(unittest.TestCase):
             for line in f:
                 self.assertEqual(line, "{}")
         self.assertIs(a_storage.reload(), None)
+
+    def test_saves_new_instance_FS(self):
+        """ Tests if file is being created """
+        i = BaseModel()
+        models.storage.new(i)
+        models.storage.save()
+        file_exist = os.path.exists(self.file_path)
+        self.assertTrue(file_exist)
