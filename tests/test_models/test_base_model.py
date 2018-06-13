@@ -26,7 +26,6 @@ class TestBaseModel(unittest.TestCase):
         except FileNotFoundError:
             pass
 
-
     def test_style_check(self):
         """
         Tests pep8 style
