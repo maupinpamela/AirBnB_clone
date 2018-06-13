@@ -24,7 +24,7 @@ class Test_Amenity(unittest.TestCase):
         """checks for a docstring comment"""
         self.assertIsNotNone(Amenity.__doc__)
 
-    def test_pep8_Amenity(self):
+    def test_Pep8_Amenity(self):
         """checks for pep8 style"""
         style = pep8.StyleGuide(quiet=True)
         p = style.check_files(['models/amenity.py'])
