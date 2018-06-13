@@ -12,7 +12,8 @@ class Test_City(unittest.TestCase):
     def setUp(self):
         """sets up for the tests"""
         self.city = City()
-        self.city.name = "Shoelaces"
+        self.city.name = "Pasadena"
+        self.city._state_id = "California"
 
     @classmethod
     def tearDown(self):
@@ -35,6 +36,7 @@ class Test_City(unittest.TestCase):
 
     def test_atts_in_dict_City(self):
         """checks if there are attributes"""
+        self.assertTrue('name' in self.city.__dict__)
         self.assertTrue('name' in self.city.__dict__)
 
     def test_save_City(self):
