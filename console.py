@@ -80,6 +80,9 @@ class HBNBCommand(cmd.Cmd):
 
         args = shlex.split(args)
         check = 0
+        if not args:
+            print("** class name missing **")
+            return
         for i in range(len(HBNBCommand.class_names)):
             if args[0] == HBNBCommand.class_names[i]:
                 check = 1
