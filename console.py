@@ -145,7 +145,5 @@ class HBNBCommand(cmd.Cmd):
             values = models.storage.all().values()
             print([obj for obj in values if type(obj).__name__ == args])
 
-
-
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
