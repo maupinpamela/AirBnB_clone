@@ -1,6 +1,8 @@
-# AirBnB Clone
+# 0x00. AirBnB clone - The console
+![Image of Holberton B&B Logo](https://s3.amazonaws.com/intranet-projects-files/holbertonschool-higher-level_programming+/263/HBTN-hbnb-Final.png)
+
 ### Description
-Holberton School's simple_shell ensures students grasp core concepts such including memory allocation and management, argc/argv, parent/child processes, and file i/o. Other basic concepts such as loops, arrays, structs, and pointers were employed in the making of this function.
+This is an Airbnb Clone, the first part in a multipart project. In this part of the clone we used Python3 to build a command interpreter for the HBnB web app. The console is similar to the Simple Shell Project. There is a command line that will execute specific commands. The next steps for this project is to integrate HTLM/CSS, database storage, API and Front end web use.
 
 ### Environment
 This function was developed and tested on `Ubuntu 14.04 LTS` via Vagrant in VirtualBox.
@@ -11,81 +13,68 @@ The repository contains the following files:
    **File**   |   **Description**
    -------------- | ---------------------
    AUTHORS | docker-formatted author file
-   man_1_simple_shell | man page
-   _itoa.c | functions to convert integer to an int
-   args_execute.c | launches processes
-   arg_to_path.c | searches for an argument in PATH env variable
-   builtin_func.c | functions to handle built-in commands
-   errors.c | functions to handle errors
-   launch_prog.c | forks current process passes parsed input to execve
-   parse_argv.c | splits string into an array of single word tokens
-   read_line.c | uses getline to read input from STDIN
+   console.py | Launches the command interpreter
+   base_model.py | functions to take care id the initialization, serialization and deserialization of the created instances
+   city.py | Contains a public class attribute: name, state_id that inherits from BaseModel
+   state.py | Contains a public class attribute: name that inherits from BaseModel
+   amenity.py | Contains a public class attribute: name that inherits from BaseModel
+   review.py | Contains a public class attribute: place_id, user_id, text that inherits from BaseModel
+   place.py | Contains a public class attribute: city_id, user_id, name, description, number_rooms, number_bathrooms, max_guests, proce_by_night, latitude, longitude, amenity_ids that inherits from BaseModel
+   user.py | Contains a public class attribute: email, password, first_name, last_name that inherits from BaseModel
+   file_storage.py | contains the class FileStorage that serializes instances
+to a JSON file and deserializes JSON files to instances
    README.md | readme file
-   shell_loop.c | controls flow of the shell
-   simple_shell.c | entry point that imports env and invokes shell_loop
-   simple_shell.h | header file
-   strutil.c | five replica standard library utility string functions
-   util.c | misc utility functions; mostly standard library replicas
+   tests/ | contains the unittests for all methods
 
 ### Function Descriptions
 
  **Function** | **Description**
  -------------- | -----------------
- int main(int argc, char **argv, char **env) | entry point
- int count_digit(int n) | count the number of digits in an int
- char *_itoa(int n) | converts an integer to ASCII character
- int args_execute(char **m_argv, char **args, char **env) |  launches built-in commands
- int launch_prog(char **m_argv, char **args, char **env) | forks current process passes parsed input to execve
- char **parse_argv(char *line) | splits string into an array of single word tokens
- line_t read_line(void) | uses getline to read input from STDIN
- void shell_loop(char **m_argv, char **env) | controls flow on the shell
- int ss_env(char *args, char **env) | prints the environment
- int ss_exit(char *args, char **env) | exits the shell
- void ss_ctrlc(int signum) | prevents ctrl-c from exiting the shell
- char *arg_to_path(char **argv, char **env) | searches for an argument in PATH env variable
- char *env_find(const char *name, int *offset, char **env) | searches environment list for name
- char *_memcpy(char *dest, char *src, unsigned int n) | copies memory area
- void *_realloc(void *ptr, size_t size) | changes size of memory block
- int _strncmp(const char *s1, const char *s2, size_t n) | compares first n bytes of s1 to s2
- int _strlen(char *s) | calculates the length of a string
- char *_strdup(char *s) | duplicates a string
- char *_strncpy(char *destn, const char *src, size_t n) | copies a string
- char *_strncat(char *destn, const char *src, size_t n) | concatenates two strings
- char *_getenv(const char *name, char **env) | searches envirnment list for name
- int _strcmp(char *s1, char *s2) | compares two strings
- int no_args(char **argv) | error when req'd arg(s) are not given
- void fork_error(cahr **argv) | error when fork fails
- void execve_error(char **argv) | error when execve fails
- int null_arg_w_free(char *converted_arg, char **argv, char *s, int err_cnt) | error when malloc in arg_to_path fails
- void execve_error_w_free(char *converted_arg, char **argv) | error when execve fails that frees memory
+ help | `help *[option]*` | Lists all available commands, or displays what option does
+ quit | `quit` | Exit command interpreter
+ EOF | `EOF` | Exit command interpreter
+ create | `create [class_name]` or `[class_name].create()`| Creates an instance of class_name
+ update | `update [class_name] [object_id] [update_key] [update_value]` or  `[class].update([object_id] [update_key] [update_value]()`| Updates the key:value of class_name.object_id instance
+ show | `show [class_name] [object_id]` or `[class_name].show([object_id])()` | Displays all attributes of class_name.object_id
+ all | `all [class_name]`, `[class_name].all()` | Displays every instance of class_name, if used without option displays every instance saved to the file
+ destroy | `destroy [class_name] [object_id]` or `[class_name].destroy([object_id])()` | Deletes all attributes of class_name.object_id
 
 ### Usage and Installation
 Clone the repository and then compile using gcc.
 ```
-$ git clone https://github.com/AfaMadza/simple_shell
-```
-### Compilation
-
-This code was compiled with the following flags:
-` gcc -Wall -Werror -Wextra -pedantic *.c -o hsh `
-
-###### Example command line call (non-interactive mode)
-
+$ git clone git@github.com:AfaMadza/AirBnB_clone.git
 ```
 
-$ echo "/bin/ls" | ./hsh
-README.md       builtin_func.c  read_line.c    simple_shell.h  util.c
-arg_to_path.c   launch_prog.c  shell_loop.c    strutil.c       args_execute.c
-hsh             parse_argv.c   simple_shell.c
-$
+###### Example command line call
 
+(hbnb) help
+
+Documented commands (type help <topic>):
+========================================
+EOF  all  create  destroy  help  quit  show  update
+
+(hbnb) help quit
+Quit command to exit the program
+(hbnb) help EOF
+Control D will exit program
+(hbnb) create BaseModel
+c601b0ad-adeb-4df6-9e40-c60b40b385b7
+(hbnb) show BaseModel c601b0ad-adeb-4df6-9e40-c60b40b385b7
+[BaseModel] (c601b0ad-adeb-4df6-9e40-c60b40b385b7) {'updated_at': datetime.datetime(20
+18, 6, 14, 1, 16, 55, 551272), 'created_at': datetime.datetime(2018, 6, 14, 1, 16, 55,
+ 551240), 'id': 'c601b0ad-adeb-4df6-9e40-c60b40b385b7'}
+(hbnb) destroy BaseModel c601b0ad-adeb-4df6-9e40-c60b40b385b7
+(hbnb) show BaseModel c601b0ad-adeb-4df6-9e40-c60b40b385b7
+** no instance found **
+(hbnb) quit
 ```
 
-###  Roadmap
 
 ---
 
 ### Authors
+
+This project was created by:
 
 * [**Afa Madza**](https://github.com/AfaMadza)
 * [**Pamela Maupin**](https://github.com/maupinpamela)
