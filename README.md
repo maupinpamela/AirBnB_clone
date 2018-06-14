@@ -19,10 +19,9 @@ The repository contains the following files:
    state.py | Contains a public class attribute: name that inherits from BaseModel
    amenity.py | Contains a public class attribute: name that inherits from BaseModel
    review.py | Contains a public class attribute: place_id, user_id, text that inherits from BaseModel
-   place.py | Contains a public class attribute: city_id, user_id, name, description, number_rooms, number_bathrooms, max_guests, proce_by_night, latitude, longitude, amenity_ids that inherits from BaseModel
+   place.py | Contains a public class attribute: city_id, user_id, name, description, number_rooms, number_bathrooms, max_guests, price_by_night, latitude, longitude, amenity_ids that inherits from BaseModel
    user.py | Contains a public class attribute: email, password, first_name, last_name that inherits from BaseModel
-   file_storage.py | contains the class FileStorage that serializes instances
-to a JSON file and deserializes JSON files to instances
+   file_storage.py | contains the class FileStorage that serializes instances to a JSON file and deserializes JSON files to instances
    README.md | readme file
    tests/ | contains the unittests for all methods
 
@@ -33,11 +32,11 @@ to a JSON file and deserializes JSON files to instances
  help | `help *[option]*` | Lists all available commands, or displays what option does
  quit | `quit` | Exit command interpreter
  EOF | `EOF` | Exit command interpreter
- create | `create [class_name]` or `[class_name].create()`| Creates an instance of class_name
- update | `update [class_name] [object_id] [update_key] [update_value]` or  `[class].update([object_id] [update_key] [update_value]()`| Updates the key:value of class_name.object_id instance
- show | `show [class_name] [object_id]` or `[class_name].show([object_id])()` | Displays all attributes of class_name.object_id
- all | `all [class_name]`, `[class_name].all()` | Displays every instance of class_name, if used without option displays every instance saved to the file
- destroy | `destroy [class_name] [object_id]` or `[class_name].destroy([object_id])()` | Deletes all attributes of class_name.object_id
+ create | `create [class_name]`| Creates an instance of class_name
+ update | `update [class_name] [object_id] [update_key] [update_value]` [update_key] [update_value]()`| Updates the key:value of class_name.object_id instance
+ show | `show [class_name] [object_id]` | Displays all attributes of class_name.object_id
+ all | `all [class_name]`, | Displays every instance of class_name, if used without option displays every instance saved to the file
+ destroy | `destroy [class_name] [object_id]` | Deletes all attributes of class_name.object_id
 
 ### Usage and Installation
 Clone the repository and then compile using gcc.
@@ -76,5 +75,5 @@ c601b0ad-adeb-4df6-9e40-c60b40b385b7
 
 This project was created by:
 
-* [**Afa Madza**](https://github.com/AfaMadza)
-* [**Pamela Maupin**](https://github.com/maupinpamela)
+Afa Madza: https://github.com/AfaMadza
+Pamela Maupin: https://github.com/maupinpamela
