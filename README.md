@@ -50,7 +50,7 @@ $ ./console.py
 
 ###### Example command line call
 ```
-./console.py
+$ ./console.py
 (hbnb) help
 
 Documented commands (type help <topic>):
