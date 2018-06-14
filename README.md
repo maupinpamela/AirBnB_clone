@@ -45,7 +45,7 @@ $ git clone git@github.com:AfaMadza/AirBnB_clone.git
 ```
 
 ###### Example command line call
-
+```python3
 (hbnb) help
 
 Documented commands (type help <topic>):
