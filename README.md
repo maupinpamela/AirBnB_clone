@@ -39,13 +39,18 @@ The repository contains the following files:
  destroy | `destroy [class_name] [object_id]` | Deletes all attributes of class_name.object_id
 
 ### Usage and Installation
-Clone the repository and then compile using gcc.
+Clone the repository:
 ```
 $ git clone git@github.com:AfaMadza/AirBnB_clone.git
 ```
+Console.py is an executable file, so run it by typing:
+```
+$ ./console.py
+```
 
 ###### Example command line call
-```python3
+```
+./console.py
 (hbnb) help
 
 Documented commands (type help <topic>):
