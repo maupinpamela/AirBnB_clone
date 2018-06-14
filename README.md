@@ -2,7 +2,7 @@
 ![Image of Holberton B&B Logo](https://s3.amazonaws.com/intranet-projects-files/holbertonschool-higher-level_programming+/263/HBTN-hbnb-Final.png)
 
 ### Description
-This is an Airbnb Clone, the first part in a multipart project. In this part of the clone we used Python3 to build a command interpreter for the HBnB web app. The console is similar to the Simple Shell Project. There is a command line that will execute specific commands. The next steps for this project is to integrate HTLM/CSS, database storage, API and Front end web use.
+This is an Airbnb Clone, the first part in a multilayered project. In this part of the clone we used Python3 to build a command interpreter for the HBnB web app. The console is similar to the Simple Shell Project. There is a command line that will execute specific commands. The next steps for this project is to integrate HTLM/CSS, database storage, API and Front end web use.
 
 ### Environment
 This function was developed and tested on `Ubuntu 14.04 LTS` via Vagrant in VirtualBox.
